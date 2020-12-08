@@ -15,9 +15,8 @@
 			margin: 0 auto;
 			padding: 20px;
 			border: 1px solid black;
-			
+			border-radius:10px;
 		}
-		body fieldset{border-radius:10px;}
 		
 		select:last-of-type{
 			vertical-align:top;
@@ -39,8 +38,7 @@
 <h1>Accesso ai controlli di una form </h1>
 <fieldset>
 	<legend> FORM </legend>
-	<form id="form1"> <!--serve a mandare i dati ad un serverino-->
-	
+	<form id = "form1">
 	<!-- Text Box -->
 	<label>
 		Campo di Testo
@@ -82,13 +80,13 @@
 
 	<!-- List Box a selezione multipla-->
 	Selezione multipla :
-	<select size="4" multiple="multiple" >
+	<select multiple="multiple" >
 		<option>nessun valore</option>
-		<option value="1" selected>uno</option>
-		<option value="2" selected>due</option>
+		<option value="1">uno</option>
+		<option value="2">due</option>
 		<option value="3">tre</option>
 	</select>
-	</form>
+</form>
 </fieldset>
 <br/> <br/>
 

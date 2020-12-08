@@ -2,6 +2,61 @@
 let _wrapper;
 $(document).ready(function () {
   _wrapper = $("#wrapper");
+  
+  $("input").eq(0).on("click",function(){
+   alert($("#wrapper").children().length);
+  })
+
+  $("input").eq(1).on("click",function(){
+    let msg="";
+    for (let i = 0; i < $("#wrapper").children().length; i++) {
+      msg+=$("#wrapper").children().eq(i).text();
+    }
+    alert(msg);
+   })
+
+   $("input").eq(2).on("click",function(){
+    $("#wrapper").children(":nth-of-type(odd)").css("backgroundColor","purple")
+   })
+   $("input").eq(3).on("click",function(){
+   let colore=
+    $("#wrapper").children(":nth-of-type(even)").css("backgroundColor",colore)
+   })
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   $("#btn1").on("click", function () {
     alert($("#wrapper").children().length);
   });
@@ -29,7 +84,7 @@ $(document).ready(function () {
     }
     alert(msg);
   });
-  $("#btn3").on("click", function () {
+ /* $("#btn3").on("click", function () {
     //$("#wrapper li:nth-of-type(even)").css({"backgroundColor":"yellow"})
     let aus=$("#wrapper").children(":nth-of-type(odd)");
     //aus.filter(":last").css({"backgroundColor":"blue"})
@@ -38,7 +93,7 @@ $(document).ready(function () {
     })
 
     //$("#wrapper").children().filter(":nth-of-type(even)").css({"backgroundColor":"yellow"})
-});
+});*/
 $("#btn4").on("click", function () {
     let pari=$("#wrapper").children(":nth-of-type(even)");
     pari.each(function (i,ref) {
@@ -50,7 +105,11 @@ $("#btn4").on("click", function () {
   
 
 });
-function evidenzia(selector) {
+function evidenzia(selector){
+  $("#wrapper").children().css("backgroundColor","");
+  $("#wrapper").children(selector).css("backgroundColor","blue");
+}
+/*unction evidenzia(selector) {
   _wrapper.children().css("backgroundColor", "");
   _wrapper.children(selector).css("backgroundColor", "yellow");
-}
+}*/

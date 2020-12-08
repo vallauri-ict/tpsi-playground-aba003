@@ -9,12 +9,17 @@ h2{
 	/* .DataTable estende la tabella per l'intera larghezza del genitore */
 	width:70%;
 	margin:10px auto;
-	
+	border:1px solid black;
+}
+
+table{
+	margin:10px auto;
 }
 
 table th{
 	text-align:left;
 	background-color:#BBF;
+	padding:5px;
 }
 
 table td{
