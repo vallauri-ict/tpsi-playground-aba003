@@ -13,5 +13,5 @@ esegua le operazioni indicate di seguito :
 •	In caso di corrispondenza applicare al TextBox un bordino nero e visualizzare a fianco con effetto fadeIn un apposito messaggio di OK con colore verde.
 •	In caso di passaggio del mouse sui TextBox, il bordo diventa blu e lo sfondo diventa blu chiaro (#CCF);
 •	In corrispondenza dell’abbandono del campo pwd (evento change) verifichi che la password inserita sia lunga almeno 8 caratteri, contenga almeno 1 carattere letterale ed almeno un 
-carattere numerico e, in caso affermativo, verifiche che sia presente nel vettore delle password e ci sia corrispondenza di posizione con lo username inserito. 
+carattere numerico e, in caso affermativo, verifiche che sia presente nel vettore delle password e ci sia corrispondenza di posizione con lo username inserito, per la corrispodenza della password è stata utilizzata una regEx (let regEx = /^(?=.*[A-Za-z])[A-Za-z\d]{8,}$/;). 
 Gestire Errori e Ok esattamente come nel caso dello User.

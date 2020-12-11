@@ -1,103 +1,96 @@
+"Use strict";
+let utenti = [
+  { user: "pippo", pwd: "pwdPippo" },
+  { user: "pluto", pwd: "pwdPluto" },
+  { user: "minnie", pwd: "pwdMinnie" },
+];
+$(document).ready(function () {
+  //puntatore alle lbl di stato
+  let lblUser = $("#msgUser");
+  let lblPw = $("#msgPwd");
 
-var utenti = [ {"user":"pippo",  "pwd":"pwdPippo"},
-               {"user":"pluto",  "pwd":"pwdPluto"},
-			   {"user":"minnie", "pwd":"pwdMinnie"} ];
-              
- let pwd;	
- let user;	   
-$(document).ready(function() {
+  //puntatore ai txt input
+  let txtUser = $("#txtUser");
+  let txtPw = $("#txtPwd");
 
-    let _txtUser = $("#txtUser");
-    let _txtPwd = $("#txtPwd");
-    let _msgUser = $("#msgUser");
-    let _msgPwd = $("#msgPwd");
+  let posPw = 0;
+  let posUser;
 
-    _txtUser.change(function() {
-        let ok = false;
+  let okUser = false;
+  let okPw = false;
 
-        if(_txtUser.val()=="")
-        {
-            _msgUser.fadeOut(function(){
-                _txtUser.css("border","1px solid red");
-                _msgUser.fadeIn(1000).text("Nessun utente inserito").css("color", "red");
-             });
-        }
-        else
-        {
-            for (const item of utenti) {
-                if (_txtUser.val() == item.user) {
-                    ok = true;
-                }
-            }
-            if (!ok) {
-                _msgUser.fadeOut(function(){
-                    _txtUser.css("border", "1px solid red");
-                    _msgUser.fadeIn(1000).text("Utente non valido").css("color", "red");
-                });
-            } else {
-                _txtUser.css("border", "1px solid black");
-                        _msgUser.fadeOut(function(){
-                         _msgUser.fadeIn(1000).text("OK").css("color", "green"); 
-                 });
-            }
-        }
-    })
-
-
-    _txtPwd.change(function() {
-        let ok = false;
-        if(_txtPwd.val()=="")
-        {
-            _txtPwd.css("border", "1px solid red");
-            _msgPwd.fadeOut(function(){
-                _msgPwd.fadeIn(1000).text("Nessuna password inserita").css("color", "red");    
-            });   
-        }
-        else
-        {
-            if(_txtPwd.val().length>=8)
-            {
-                for (const item of utenti)
-                if (_txtPwd.val() == item.pwd)
-                    if (item.user == _txtUser.val())
-                        ok = true;
-        if (!ok) {
-            _txtPwd.css("border", "1px solid red");
-            _msgPwd.fadeOut(function(){
-                _msgPwd.fadeIn(1000).text("Password non valida").css("color", "red"); 
-             });
+  let regEx = /^(?=.*[A-Za-z])[A-Za-z\d]{8,}$/;
+  
+  //controllo mediante l' evento change la validità dello user
+  txtUser.change(function () {
+    posUser = 0;
+    okUser = false;
+    if (txtUser.val() != "" && txtUser.val() != null) {
+      for (const item of utenti) {
+        if (txtUser.val() == item.user) {
+          okUser = true;
+          posUser++;
+          break;
         } else {
-            _txtPwd.css("border", "1px solid black");
-            _msgPwd.fadeOut(function(){
-            _msgPwd.fadeIn(1000).text("OK").css("color", "green");
-           });
+          posUser++;
         }
-            }
-            else
-            {
-                _txtPwd.css("border", "1px solid red");
-            _msgPwd.fadeOut(function(){
-                _msgPwd.fadeIn(1000).text("Password troppo corta").css("color", "red");    
-            }); 
-            }
-            
-        }
-    })
-
-    coloraTextBox();
-
-    function coloraTextBox(){
-        _txtUser.on("mouseenter", function(){
-            _txtUser.css({"background-color":"#CCF", "border":"1px solid blue"});
-        })
-        _txtUser.on("mouseleave", function(){
-            _txtUser.css({"background-color":"", "border":""});
-        })
-        _txtPwd.on("mouseenter", function(){
-            _txtPwd.css({"background-color":"#CCF", "border":"1px solid blue"});
-        })
-        _txtPwd.on("mouseleave", function(){
-            _txtPwd.css({"background-color":"", "border":""});
-        })
+      }
     }
+    if (okUser) {
+      lblUser.text("OK").css({ color: "green" }).hide().fadeIn(1000);
+      txtUser.removeClass();
+      txtUser.addClass("ok");
+    } else {
+      lblUser.text("Utente errato").css({ color: "red" }).hide().fadeIn(1000);
+      txtUser.removeClass();
+      txtUser.addClass("nok");
+    }
+  });
+
+  //assicuto che ci sia l'over sui campi
+  txtUser.hover(
+    function () {
+      $(this).addClass("over");
+    },
+    function () {
+      $(this).removeClass("over");
+    }
+  );
+
+  txtPw.hover(
+    function () {
+      $(this).addClass("over");
+    },
+    function () {
+      $(this).removeClass("over");
+    }
+  );
+
+  txtPw.change(function () {
+    posPw = 0;
+    okPw = false;
+    if (txtPw.val() != "" && txtPw.val() != null) {
+      if (regEx.test(txtPw.val())) {
+        for (const item of utenti) {
+          if (txtPw.val() == item.pwd) {
+            okPw = true;
+            posPw++;
+            break;
+          } else {
+            posPw++;
+          }
+        }
+      }
+    }
+
+    if (okPw == true && okUser == true && posPw == posUser) {
+      lblPw.text("OK").css({ color: "green" }).hide().fadeIn(1000);
+      lblPw.removeClass();
+      lblPw.addClass("ok");
+    } else {
+      lblPw.text("Utente errato").css({ color: "red" }).hide().fadeIn(1000);
+      lblPw.removeClass();
+      lblPw.addClass("nok");
+    }
+  });
 });
