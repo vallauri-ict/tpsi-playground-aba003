@@ -18,8 +18,8 @@ $(document).ready( function(){
         //let box = wrapper.children().eq(n);
         let box = wrapper.children(".box").eq(n);
         // posso mettere in cascata le stesse proprietà
-        box.animate({"opacity":0.3},400)
-           .animate({"opacity":0.6},400)
+        box.animate({"opacity":0.6},400)
+           .animate({"opacity":0.8},400)
            .animate({"opacity":0.1},400);
     }
 
