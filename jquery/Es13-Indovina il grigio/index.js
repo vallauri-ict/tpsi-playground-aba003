@@ -28,26 +28,26 @@ $(document).ready(function () {
     }
   }
 
+  
   function vediColore() {
     wrapper.off("click", "div");
     let p = $("#tooltip");
-    p.text($(this).prop("id"));
+    p.text($(this).prop("id")).hide().fadeIn(1000);
     wrapper.on("click", "div", vediColore);
   }
   function nascondiColore() {
     wrapper.off("mouseout", "div");
     let p = $("#tooltip");
-    p.text("");
+    p.text("").hide().fadeIn(1000);
     wrapper.on("mouseout", "div", nascondiColore);
   }
 
   function controllaGiusto() {
     let txtPos = $("#txtPosizione").val();
     let txtVal = $("#txtColore").val();
-    console.log(txtPos);
-    console.log(txtVal);
 
     let divs = wrapper.children("div");
+
     console.log(divs);
     for (let i = 0; i < divs.length; i++) {
       if (txtPos == i + 1) {
