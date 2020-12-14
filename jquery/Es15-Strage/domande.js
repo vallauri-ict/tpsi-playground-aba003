@@ -1,5 +1,3 @@
-"use strict"
-
 var elencoDomande = [
     { "argomento":"Geografia e Europa",
 	  "domande":[
@@ -15,7 +13,7 @@ var elencoDomande = [
 		  {"domanda":"Le tre sedi del parlamento europeo sono Bruxelles, Strasburgo e Lussemburgo", "risposta":"T"}
 	  ]
 	},
-    {  "argomento":"Matematica",
+    { "argomento":"Matematica",
 	  "domande":[
 		  {"domanda":"15*5 = 75", "risposta":"T"},
 		  {"domanda":"Se 5x = 10; x = 2", "risposta":"T"},
@@ -45,38 +43,3 @@ var elencoDomande = [
 	  ]
 	}	
 ];
-
-$(document).ready(function(){
-	console.log(elencoDomande);
-	console.log("\n");
-
-	for (const item of elencoDomande) {
-		console.log(item.argomento);
-		for (const key of item.domande) {
-			console.log(key.domanda)
-		}
-		
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*for (const item of elencoDomande) {
-		console.log(item.argomento);
-		for (const key of item.domande) {
-			console.log(key.domanda);
-		}
-	}*/
-})
