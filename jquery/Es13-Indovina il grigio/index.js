@@ -30,7 +30,7 @@ $(document).ready(function () {
 
   
   function vediColore() {
-    wrapper.off("click", "div");
+    wrapper.off("mouseover", "div");
     let p = $("#tooltip");
     p.text($(this).prop("id")).hide().fadeIn(1000);
     wrapper.on("click", "div", vediColore);
