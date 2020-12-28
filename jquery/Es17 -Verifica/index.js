@@ -23,6 +23,8 @@ $(document).ready(function () {
       console.log(divArticolo.prop("id"));
       divArticolo.appendTo(wrapper);
 
+      
+
       let img = $("<img>");
       img.prop("src", `img/${item.src}.jpg`);
       img.appendTo(divArticolo);
