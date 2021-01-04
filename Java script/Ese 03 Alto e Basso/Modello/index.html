@@ -1,0 +1,22 @@
+<!DOCTYPE html> <!-- documento html5 -->
+<html lang="it">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Alto e Basso</title>
+		<link rel="stylesheet" href="index.css"/>
+		<script type="application/javascript" src="index.js"></script>
+	</head>	
+	<body onload="inizializza()">   
+		<div id="wrapper">
+			<h1>Alto e Basso</h1>
+			<h2>Indovina il numero segreto compreso tra 1 e 100 in 10 tentativi</h2>
+			<input type="number" min="1" max="100" id="txtNumero"/>
+			<!--<input type="button" value="gioca" id="btnGioca" onclick="gioca()"/>-->
+			
+			<!-- Nel caso in cui il tag button fosse all'interno di una form il type
+			di default è submit. Fuori da una form il default è button. -->
+			<button id="btnGioca" onclick="gioca()">Gioca</button>
+			<div id="divMessaggio"></div>
+		</div>
+	</body>
+</html>

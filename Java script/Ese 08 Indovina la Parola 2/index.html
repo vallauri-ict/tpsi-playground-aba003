@@ -1,0 +1,65 @@
+<!DOCTYPE html> <!-- documento html5 -->
+<html lang="it">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Indovina la Parola</title>
+		<link rel="stylesheet" href="index.css"/>
+		<script type="application/javascript" src="index.js"></script>
+	</head>	
+	<body>   
+		<div id="wrapper">
+			<h1>Indovina la Parola</h1>
+
+			<button onclick="avvia()" id="btnAvvia">Avvia</button>
+			<label>Punti:</label>
+			<input type="text" id="txtPunti">
+
+			<br>
+
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+			<input type="text" class="textbox" autocomplete="off">
+
+			<br>
+			<br>
+
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+			<input type="checkbox" class="checkbox" autocomplete="off">
+
+			<br>
+			<br>
+			<br>
+
+			<input type="text" id="txtLettera">
+			<button id="btnInvia" onclick="invia()">Invia</button>
+
+			<br>
+
+			<button id="btnRisposta" onclick="risposta()">Risposta</button>
+
+			<br>
+
+			<div id="divRisposta">
+				<label>Inserisci la riposta:</label>
+				<input type="text" id="rispo">
+				<button onclick="inviaRisposta()">OK</button>
+			</div>
+
+		</div>
+	</body>
+</html>

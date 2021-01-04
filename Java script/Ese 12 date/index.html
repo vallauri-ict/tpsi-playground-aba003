@@ -1,0 +1,36 @@
+<!DOCTYPE html> <!-- documento html5 -->
+<html lang="it">
+ <head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="index.css" />
+    <script type="application/javascript" src="index.js"></script>
+	<title> Esercizio 10 </title>
+ </head>
+ <body>
+ 	<header>
+		<h1 align="center"> Compito di Laboratorio di TPSIT </h1>
+		<div id="wrapper">
+			<label for="txtNPartecipanti">
+				Numero Partecipanti:
+			</label>
+			<input type="number" name="txtNPartecipanti" id="txtNPartecipanti" min="1" max="9" step="1">
+			<span>1 .. 9</span>
+			<br>
+			<label for="txtDataInizio">
+				Data Inizio:
+			</label>
+			<input type="date" name="txtDataInizio" id="txtDataInizio">
+			<span>GG/MM/AAAA</span>
+			<br>
+			<label for="txtDataFine">
+				Data Fine:
+			</label>
+			<input type="date" name="txtDataFine" id="txtDataFine">
+			<span>GG/MM/AAAA</span>
+			<br>
+			<input type="button" id="btnCalcola" value="CALCOLA" onclick="calcola()"><br>
+			<p>TOTALE: <span id="risultato">X.XXX,XX €</span></p><img id="imgSconto">
+		</div>
+	</header>
+ </body>
+</html>

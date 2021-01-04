@@ -1,0 +1,35 @@
+<!DOCTYPE html> <!-- documento html5 -->
+<html lang="it">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Indovina la Sequenza</title>
+		<link rel="stylesheet" href="index.css"/>
+		<script type="application/javascript" src="index.js"></script>
+	</head>	
+	<body onload="init()">   
+		<div id="wrapper">
+			<h1>Indovina la Sequenza</h1>
+			<input type="number" min="1" max="5" class="number" required>
+			<input type="number" min="1" max="5" class="number" required>
+			<input type="number" min="1" max="5" class="number" required>
+			<input type="number" min="1" max="5" class="number" required>
+			<input type="number" min="1" max="5" class="number" required>
+			
+			<br>
+
+			<input type="checkbox" class="checkbox">
+			<input type="checkbox" class="checkbox">			
+			<input type="checkbox" class="checkbox">
+			<input type="checkbox" class="checkbox">			
+			<input type="checkbox" class="checkbox">
+			
+			<br>
+
+			<input type="button" value="Gioca" onclick="controllaNumeri()">
+
+			<br>
+
+			<label id="risultato"></label>
+		</div>
+	</body>
+</html>
