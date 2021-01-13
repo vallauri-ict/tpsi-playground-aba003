@@ -1,0 +1,39 @@
+html {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Work Sans", sans-serif;
+  text-align: center;
+}
+h4 {
+  margin: 0;
+  color: #999;
+  font-weight: 500;
+}
+html input[type="range"] {
+  outline: 0;
+  border-radius: 500px;
+  width: 600px;
+  max-width: 100%;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  html input[type="range"] {
+    overflow: hidden;
+    -webkit-appearance: none;
+    background: #efefef;
+  }
+  html input[type="range"]::-webkit-slider-thumb {
+    width: 30px;
+    -webkit-appearance: none;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: -340px 0 0 325px rgb(36, 197, 36), inset 0 0 0 40px rgb(16, 139, 16);
+    border-radius: 50%;
+    transition: box-shadow 0.2s ease-in-out;
+    position: relative;
+  }
+  html input[type="range"]:active::-webkit-slider-thumb {
+    box-shadow: -340px 0 0 325px  rgb(36, 197, 36), inset 0 0 0 2px rgb(36, 197, 36) ;
+  } 
+}
