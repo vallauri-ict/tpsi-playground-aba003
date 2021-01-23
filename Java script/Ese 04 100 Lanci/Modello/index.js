@@ -13,6 +13,7 @@ function gioca(){
 	/*Dichiarazione di un vettore, crea le celle automaticamente al momento 
 	dell'utilizzo*/
 	let cont=[];
+	alert("pipi");
 	
 	/*Prima soluzione di inizializzazione*/
 	for(let i=0;i<6;i++)

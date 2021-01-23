@@ -1,11 +1,12 @@
 ﻿"use strict";
 $(document).ready(function(){		
 		
-	let utenti = [{"id":1, "nome":"pippo", "password":"pippo"}, 
-				  {"id":2, "nome":"pluto", "password":"pluto"}, 
-				  {"id":3, "nome":"minnie","password":"minnie"},
-				  {"id":4, "nome":"sonny", "password":"sonny"}]
-				  
+	let utenti= [
+		{ "id": 1, "nome": "pippo", "password": "pippo" },
+		{ "id": 2, "nome": "pluto", "password": "pluto" },
+		{ "id": 3, "nome": "minnie", "password": "minnie" },
+		{ "id": 4, "nome": "sonny", "password": "sonny" }
+	  ];			  
 	let ombrelloni = []
 	/*
 		[{"id":1, stato:[0,0,0,0, etc]},
@@ -23,7 +24,7 @@ $(document).ready(function(){
 	$("<a>").prop({"download":"ombrelloni.json", "href":"#"}).text("salva json su disco")
 	.appendTo(wrapper).on("click", function(){
 		let json = {"utenti":utenti, "ombrelloni":ombrelloni}
-		json = JSON.stringify(json, null, 3)
+		json = JSON.stringify(json, null, 3)//il primo qullo che voglio serializzare il 2 sempre null 
 		let blob = new Blob([json], {type : 'application/json'});
 		$(this).prop("href", URL.createObjectURL(blob));
 	})
