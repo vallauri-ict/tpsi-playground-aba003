@@ -1,7 +1,7 @@
 ﻿"use strict";
 const X_OFFSET = 180;
 const Y_OFFSET = 210;
-const MMG = 24 * 3600 * 1000; // msec in un giorno
+const MMG = 2436001000; // msec in un giorno
 const RIGHE = 18;
 const COLONNE = 37;
 
@@ -13,6 +13,8 @@ $(document).ready(function () {
   let _dataInizio = $("#wrapper").find("input").eq(0);
   let _dataFine = $("#wrapper").find("input").eq(1);
   let _msg = $("#wrapper").children("label").eq(2);
+  let dataStart;
+  let dataEnd;
 
   _mappa.hide();
   _btnVisualizzaMappa.prop("disabled", true);
@@ -21,10 +23,21 @@ $(document).ready(function () {
     _dataFine.prop("disabled", false);
     _dataFine.prop("min", _dataInizio.val());
   });
+
   _dataFine.on("change", function () {
     _btnVisualizzaMappa.prop("disabled", false);
     _btnVisualizzaMappa.addClass("buttonEnabled");
+    dataEnd = new Date(_dataFine.val());
+    _msg.text(`giorni scelti: ${(dataEnd- dataStart)/MMG+1}`);
   });
+
+  _dataInizio.on("change", function () {
+    _dataFine.prop("disabled", false);
+    _dataFine.prop("min", _dataInizio.val());
+    dataStart = _dataInizio.val();
+    dataStart = new Date(_dataInizio.val());
+  });
+
   _btnVisualizzaMappa.on("click", function () {
     _mappa.show();
     $.ajax({
@@ -33,24 +46,19 @@ $(document).ready(function () {
       success: function (data) {
         console.log(data);
         for (let i = 0; i <= RIGHE; i++) {
-          if (i != 9) {
-            for (let j = 0; j <= COLONNE; j++) {
-              if (j != 22) {
-                let div = $("<div>");
-                div.appedTo(_mappa);
-                div.addClass("ombrelloni");
-                div.css({
-                  top: Y_OFFSET + 16 * i,
-                  left: X_OFFSET + 16 * j,
-                });
-              }
-            }
+          for (let j = 0; j <= COLONNE; j++) {
+            let div = $("<div>");
+            div.appendTo(_mappa);
+            div.addClass("ombrellone");
+            div.css({
+              top: Y_OFFSET + 16 * i,
+              left: X_OFFSET + 16 * j + i * -2,
+            });
           }
         }
       },
     });
   });
-
   function errore(jqXHR, text_status, string_error) {
     if (jqXHR.status == 0) alert("Connection Refused or Server timeout");
     else if (jqXHR.status == 200)
