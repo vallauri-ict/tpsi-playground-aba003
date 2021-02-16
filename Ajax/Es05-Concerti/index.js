@@ -11,6 +11,7 @@ $(document).ready(function () {
   let tuttiIGeneri;
   let tutteLecittà;
   let tuttiIConcerti;
+  let ultimoURL;
 
   _divDettagli.hide();
 
@@ -50,21 +51,24 @@ $(document).ready(function () {
       opt.html(gender.genere);
     }
   });
-
-  creaTabella(URL + "/concerti");
+  ultimoURL=URL + "/concerti"
+  creaTabella(ultimoURL);
   _btnFiltro.on("click", function () {
     let cittaSelezionata = _lstCitta.prop("selectedIndex");
     let genereSelezionato = _lstGeneri.prop("selectedIndex");
-   
 
-    if (cittaSelezionata == 0 && genereSelezionato ==0) {
-      creaTabella(URL + "/concerti");
-    } else if (genereSelezionato ==0) {
-      creaTabella(URL + "/concerti?codCitta=" +  cittaSelezionata);
+    if (cittaSelezionata == 0 && genereSelezionato == 0) {
+      ultimoURL=URL + "/concerti"
+      creaTabella(ultimoURL);
+    } else if (genereSelezionato == 0) {
+      ultimoURL=URL + "/concerti?codCitta=" + cittaSelezionata
+      creaTabella(ultimoURL);
     } else if (cittaSelezionata == 0) {
-      creaTabella(URL + "/concerti?codGenere=" +  genereSelezionato);
-    }else{
-      creaTabella(URL+"/concerti?codCitta="+cittaSelezionata+"&codGenere="+genereSelezionato);
+      ultimoURL=URL + "/concerti?codGenere=" + genereSelezionato
+      creaTabella(ultimoURL);
+    } else {
+      ultimoURL=  URL + "/concerti?codCitta=" +   cittaSelezionata +  "&codGenere=" +  genereSelezionato
+      creaTabella(ultimoURL);
     }
   });
 
@@ -123,6 +127,17 @@ $(document).ready(function () {
         button = $("<button>");
         button.text("Prenota");
         button.css("background-color", "green");
+        button.prop("prenotazione", concert.codCitta); //parseInt(tutteLecittà[concert.codCitta - 1])
+        button.on("click", function () {
+          url = URL + "/citta/" + $(this).prop("prenotazione"); 
+          request = inviaRichiesta("Patch", url, {"nPosti":(tutteLecittà[$(this).prop("prenotazione")].nPosti)-1 });
+          console.log((tutteLecittà[$(this).prop("prenotazione")].nPosti));
+          request.done(function () {
+            creaTabella(ultimoURL);
+          })
+          request.fail(errore);
+          /*setTimeout(function() { alert("Prenotazione effetuata correttamente"); }, 1000);*/
+        });
         button.appendTo(td);
       }
     });

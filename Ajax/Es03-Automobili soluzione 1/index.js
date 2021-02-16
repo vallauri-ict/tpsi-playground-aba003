@@ -171,15 +171,15 @@ $(document).ready(function () {
   let _salva = $("#btnSalva");
   _salva.on("click", function name(params) {
     let url = URL + "/automobili/" + $("#txtId").val();
-    let request = inviaRichiesta("patch", url, {
-      prezzo: $("#txtPrezzo").val(),
-    });
+    let request = inviaRichiesta("patch", url, { prezzo: $("#txtPrezzo").val(),});
+     
+    
+
     request.fail(errore);
     request.done(function name(params) {
-        alert("Record aggiornato con successo");
-        _lstModelli.trigger("change"); //vado a forzare l' evento change
-      });
-
+      alert("Record aggiornato con successo");
+      _lstModelli.trigger("change"); //vado a forzare l' evento change
+    });
   });
   function eliminaClick() {
     let url = URL + "/automobili/" + $(this).prop("id");
