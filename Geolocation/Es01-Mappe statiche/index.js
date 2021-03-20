@@ -4,15 +4,16 @@ const url = "https://maps.googleapis.com/maps/api/staticmap";
 const key = "";
 
 const params = {
+  //parametri comuni
   key: key,
-  center: "44.5557763,7.7347183", //"via san michele 68, fossano",,
-  location:"44.5557763,7.7347183",
+  center: "44.5557763,7.7347183", //"si usa per le appe statiche
   zoom: 16,
   size: "800x600",
 
-  // maptype viene aggiunto dopo  manualmente
+  //si usa per le mappe streetviw
+  location:"44.5557763,7.7347183",
    markers: "color:blue|size:big|label:V|via san michele 68, fossano",
-   heading:"60",
+   heading:"-60",
    pitch:"7",
    fov:"45",
 };
