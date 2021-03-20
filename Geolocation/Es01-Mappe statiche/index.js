@@ -30,7 +30,7 @@ window.onload = function () {
         button.on("click",visualizzaMappa);
     }
 
-
+$("button").eq(0).trigger("click")
 
     function visualizzaMappa(){
         let url;
