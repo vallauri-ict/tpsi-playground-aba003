@@ -80,11 +80,15 @@ $(document).ready(function () {
     let opzioneSelezionata = _lstModelli
       .children("option")
       .eq(_lstModelli.prop("selectedIndex"));
+
+      console.log(_lstModelli.prop("selectedIndex"));
+      console.log(opzioneSelezionata);
     /*_lstModelli.prop("nome", opzioneSelezionata.split(" - ")[0]);
     _lstModelli.prop("alimentazione", opzioneSelezionata.split(" - ")[1]);*/
     _lstModelli.prop("modello", opzioneSelezionata.prop("modello")); //salvo dentro il listbox le informazioni relative al modello selezionato
 
     let codModello = _lstModelli.val();
+    console.log(codModello);
     let request = inviaRichiesta(
       "get",
       URL + "/automobili?codModello=" + codModello
