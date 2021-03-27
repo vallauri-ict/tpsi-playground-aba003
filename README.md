@@ -14,4 +14,4 @@ NB: Se si vuole clonare la repository sul proprio PC, affinchè le applicazioni 
 - nominare il medesimo file jquery.js;
 - aggiungere il file nella stessa directory in cui sono localizzate le applicazioni.
 
-# disponibile progetto Random user
+# Disponibile progetto Random user
