@@ -9,6 +9,7 @@ Geolocation
 HTML
 CSS3
 PHP
+
 NB: Se si vuole clonare la repository sul proprio PC, affinchè le applicazioni possano essere avviate senza errori:
 
 - Integrare jquery per tutti i progetti utilizzanti jquery cartelle:jquery,ajax,PHP;
