@@ -15,9 +15,12 @@
     <?php
         $nome = "pippo";
         echo ("Il mio nome è $nome ");
+     
+      
         visualizza ($nome);
         function visualizza($nome) {
         echo ("<p style='font-weight:bold'>Il mio nome è $nome </p>");
+      
     }
    ?>
    <h1>contenuto della variabile globale $_server</h1>
@@ -26,10 +29,7 @@
        echo("$key : $valore <br>\n");
    }
    ?>
-   <h1>Info sulle configurazione del server</h1>
-   <?php
-   echo(phpinfo());
-    
-   ?>
+   
+  
 </body>
 </html>
