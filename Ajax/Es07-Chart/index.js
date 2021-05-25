@@ -39,16 +39,8 @@ window.onload=function(){
                 td.text(nations[key]);
             }
 
-            let values = [];
-            let colors = []
+            let values = [8,12,52,5,58,8,9];
             
-            for (const key in nations) {
-                values.push(nations[key]);
-                let r = generaNumero(0, 255);
-                let g = generaNumero(0, 255);
-                let b = generaNumero(0, 255);
-                colors.push(`rgb(${r}, ${g}, ${b})`);
-            }
             
             if(chart != undefined)
                 chart.destroy();
@@ -64,7 +56,7 @@ window.onload=function(){
                         "label": 'Grafico delle nazioni', 
                         // si aspetta un enumerativo
                         "data": values, 
-                        "backgroundColor": colors, 
+                        
                         "borderColor": "#000", 
                         "borderWidth": 1  // default=2   
                         }] 
