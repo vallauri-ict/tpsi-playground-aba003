@@ -7,16 +7,15 @@ $(document).ready(function(){
         let autore = $("#txtInterprete");
         if(titolo.val() != "" && autore!="" && anno!="")
         {
-            let param  = {
-                "titolo" : titolo.val(),
-                "autore" : autore.val(),
-                "anno" : anno.val()
+            let param={
+                anno:anno.val(),
+                titolo:titolo.val(),
+                autore:autore.val(),
             }
-            let request = inviaRichiesta("post", "servizi/inserisci.php",param);
+            let request=inviaRichiesta("post", "servizi/inserisci.php",param);
             request.fail(errore);
-            request.done(function(data){
-                console.log(data);
-                alert("record inserito correttamente");
+            request.done(function(){
+                alert("Dai Inseriti correttamente");
                 window.location.href = "index.html";
             })
         }

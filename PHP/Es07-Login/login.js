@@ -39,17 +39,16 @@ $(document).ready(function() {
 		else{
 			let user=_username.val();
 			// md5 restituisce una word esadecimale, quindi è obbligatorio .toString()
-			let pass=CryptoJS.MD5(_password.val()).toString();
+			let pass=CryptoJS.MD5(_password.val()).toString(); //crea un impronta irreversibile
 			let _richiestaLogin= inviaRichiesta("POST", "server/login.php", { "username":user, "password":pass } );
 			_richiestaLogin.fail(function(jqXHR, test_status, str_error) {
 				if (jqXHR.status == 401) { // unauthorized
 					_lblErrore.show();
 				} else
-					error(jqXHR, test_status, str_error)
+					errore(jqXHR, test_status, str_error)
 			});
 			_richiestaLogin.done(function(data) {
-				if(data.ris=="ok") // test inutile
-					window.location.href = "index.html"
+				window.location.href = "index.html";
 			});
 		}
 	}

@@ -34,23 +34,21 @@
     }
 
     // step 2: apertura connessione
-    $con = _connection();
+   $con=_connection();
 
-    // step 3: esecuzione query
-    $sql = "INSERT INTO `dischi` (autore, titolo, anno) VALUES ('$autore','$titolo',$anno)";
-    $rs = _execute($con, $sql);
+   $sql="INSERT INTO dischi (autore, titolo, anno)
+   VALUES ('$autore', '$titolo', $anno)";
 
-    // step 4: invio dei dati al client
-    // la richiesta si aspetta un json quindi bisogna ritornargli
-    // un json effettivamente
-    if($rs)
-        echo('{"ris": "ok"}'); 
-    else
-    {
-        $con -> close();
-        http_response_code(500);
-        die("Errore esecuzione della query");
-    }
+   $rs=_execute($con,$sql);
+
+   if ($rs) {
+      echo('{"ris":"ok"}');
+   }else{
+       http_response_code(400);
+       $con->close();
+       die("Erroe nell' esecuzione della query");
+   }
+
 
     // step 5: chiusura della connessione
     $con -> close();

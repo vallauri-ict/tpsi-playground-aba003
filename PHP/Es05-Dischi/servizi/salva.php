@@ -43,10 +43,12 @@
         die("parametro mancande: anno");
     }
 
+
     // step 2: apertura connessione
     $con = _connection();
 
     // step 3: esecuzione query
+    
     $sql = "UPDATE dischi SET titolo='$titolo', anno= $anno, autore='$autore' WHERE id=$id";
     $rs = _execute($con, $sql);
 
