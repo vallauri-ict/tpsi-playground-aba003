@@ -2,17 +2,11 @@
 
 Alpha Vantage provides enterprise-grade financial market data through a set of powerful and developer-friendly APIs. From traditional asset classes (e.g., stocks and ETFs) to forex and cryptocurrencies, from fundamental data to technical indicators, Alpha Vantage is your one-stop-shop for global market data delivered through cloud-based APIs, Excel, and Google Sheets.
 
-## Installation for usage
+<div align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1S3yIZ19Ykii8C5Z5HZdCQPIHtFyRfKNl" width="700px"/>
+</div>
 
-What you need to run the project :
 
-```bash
-# API key Alpha Vantage free or premium (for the data)
-
-# npm install json-server (to arrange the server)
-
-# cmd --> json-server -w json_name.json
-```
 
 ## Technologies
 
@@ -26,10 +20,46 @@ What you need to run the project :
 
 <br>
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## How To Run
 
-Please make sure to update tests as appropriate.
+To clone and run this application, you'll need [Git](https://git-scm.com/downloads) installed on your computer. From your command line:
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+```
+// Clone this repository
+git clone https://github.com/vallauri-ict/alpha-vantage-aba003
+
+// Get into the project's (json-) server folder
+cd alpha-vantage-ivan-angjelovski\server
+
+// In order to start the pseudo-server, type:
+json-server --w db.json
+
+// Get back to the root folder
+cd ..
+
+// Run the .html file
+Invoke-Item index.html
+
+// And the application will start!
+```
+
+## Key Features
+
+* On-server data (node js - json server);
+* Simple interface with menu, controls and captions all around the application; 
+* One page for every financial info you want;
+* On financial info request -> chart is generated (financial chart for stock, forex and crypto & bar chart for sectors performace);
+* Downloadable chart data in CSV file;
+* Google Maps locating company's headquarter;
+* Informations, logo & website of the companies;
+* Bootstrap responsive design.
+
+## Credits
+- [Alpha Vantage](https://www.alphavantage.co/)
+- [Clearbit](https://clearbit.com/)
+- [jQuery UI](https://jqueryui.com/)
+- [Chart.js](https://www.chartjs.org/)
+- [Google Cloud Platform](https://console.developers.google.com/)
+- [Bootstrap](https://getbootstrap.com/)
+
+
