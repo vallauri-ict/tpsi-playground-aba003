@@ -16,10 +16,10 @@ let server=_http.createServer(function (req, res) {  /**si crea un webserver gra
     //res.end();
     //console.log("richiesta eseguita");
 
+    //lettura di metodo risorsa e parametri
     let metodo=req.method; //get post o put patch
     //parsing della url ricevuta
     let url= _url.parse(req.url,true); /**url corrente e true per parsificare i parametri, chiediamo alla libreria di parsificare  */
-
     let risorsa=url.pathname;
     let parametri=url.query;
     let dominio=req.headers.host
@@ -42,5 +42,5 @@ let server=_http.createServer(function (req, res) {  /**si crea un webserver gra
 });
 
 // se non si specifica l'indirizzo IP di ascolto il server viene avviato su tutte le interfacce
-server.listen(port);
+server.listen(port); //avvia il server
 console.log("server in ascolto sulla porta " + port);
