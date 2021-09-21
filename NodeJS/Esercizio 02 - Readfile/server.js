@@ -2,55 +2,63 @@
 
 const _http = require("http");
 const _url = require("url");
-const _fs = require("fs"); //module per accedere al file sistem
-const HEADERS = require("./headers.json");
-const mime = require("mime");
+const _fs = require("fs");
+let HEADERS = require("./headers.json");
+const _mime = require("mime");
 
 const PORT = 1337;
 let paginaErrore;
+_http
+  .createServer(function (req, res) {
+    let metodo = req.method;
+    let url = _url.parse(req.url, true);
 
-var server = _http.createServer(function (req, res) {
+    let risorsa = url.pathname;
+    let parametri = url.query;
+    console.log(`method: ${metodo}  -  risorsa: ${risorsa} + parametri: ${JSON.stringify(parametri)}`)
 
-  //si deve leggere metodo risorsa e parametri
-  let metodo = req.method;
-  let url = _url.parse(req.url, true);
-  let risorsa = url.pathname;
-  let parametri = url.query;
+    if (risorsa == "/") {
+      
+     risorsa='/index.html'
+    } 
+    if (!risorsa.startsWith("/api/")) {
+      risorsa = "./static" + risorsa;
+      _fs.readFile(risorsa, function (err, data) {
+        if (!err) {
+          let header = { "Content-Type": _mime.getType(risorsa) };
+          res.writeHead(200, header);
+          res.write(data);
+        } else {
+          res.writeHead(404, HEADERS.html);
+          res.write(paginaErrore);
+        }
+        res.end();
+      });
+    }else if (risorsa=='/api/servizio1') {
+        //gestione del servizio
+        let json={"ris":"ok"};
+        res.writeHead(200,HEADERS.json);
+        res.write(JSON.stringify(json));
+        res.end();
+    }else{
+        res.writeHead(404);
+        res.write("Servizio inesistente");
+        res.end();
+    }
+  })
+  .listen(PORT, function (err) {
+    if (!err) {
+      console.log("Connessione stabilita con successo sulla porta " + PORT);
+      paginaErrore = _fs.readFile("./static/error.html", function (err, data) {
+        if (!err) {
+          paginaErrore = data;
+        } else {
+          paginaErrore = "<h1>Errore Pagina 404</h1>";
+        }
+      });
+    }else{
+      console.log("Ooops something went wrong on PORT: " + PORT);
+    }
+    
+  });
 
-  
-
-  if (risorsa=='/') { //controllare se non si è richiesto niente
-      risorsa='/index.html'
-  }
-  if (!risorsa.startsWith("/api/")) {
-      risorsa="./static"+risorsa;
-      _fs.readFile(risorsa, function (error,data) { //file da leggere e call back da eseguere
-          if (!error) {
-              let header = {"Content-Type": mime.getType(risorsa)}
-              res.writeHead(200,header);
-              res.write(data);
-              res.end();
-              
-          }else{
-            res.writeHead(404,HEADERS.html);
-            res.write(paginaErrore);
-            res.end();
-          }
-      })
-
-  }else{
-
-  }
-  
-  res.writeHead(200,HEADERS);
-});
-server.listen(PORT,function name(params) { //sfutto quest call back per salvare la pagina di errore
-paginaErrore =  _fs.readFile("./static/error.html",function (error,data) {
-if (!error) {
-    paginaErrore=data;
-}else{
-    paginaErrore="<h1>Pagina 404</h1>";
-}
-})
-});
-console.log(`Server avviato correttamente sulla porta ${PORT}`);
